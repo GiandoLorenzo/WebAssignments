@@ -1,0 +1,15 @@
+.nav-link{
+    color: white;
+}
+.nav-link:hover,.nav-link:focus{
+    color: #bcaeae;
+}
+:root{
+    --primary-color: black !important;
+}
+
+.border-primary{
+
+    border-color: gray !important;
+    box-shadow: #4d4c4c;
+}
