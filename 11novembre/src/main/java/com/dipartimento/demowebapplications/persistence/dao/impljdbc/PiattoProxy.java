@@ -3,10 +3,6 @@ package com.dipartimento.demowebapplications.persistence.dao.impljdbc;
 import com.dipartimento.demowebapplications.model.Piatto;
 import com.dipartimento.demowebapplications.model.Ristorante;
 import com.dipartimento.demowebapplications.persistence.DBManager;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -14,9 +10,16 @@ import java.util.List;
 public class PiattoProxy extends Piatto {
 
 
-    public List<Piatto> getRistoranti() {
+    public PiattoProxy(String nome, String ingredienti) {
+    }
+
+    public PiattoProxy() {
+
+    }
+
+    public List<Ristorante> getRistoranti() {
         if(this.ristoranti==null){
-            this.restoranti= DBManager.getInstance().getRistoranteDao().findAllByRistoranteName(this.nome);
+            this.ristoranti= DBManager.getInstance().getRistoranteDao().findAllByPiattoName(this.getNome());
         }
         return ristoranti;
     }
