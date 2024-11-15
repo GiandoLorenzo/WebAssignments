@@ -133,6 +133,18 @@ public class RistoranteDaoJDBC implements RistoranteDao {
 
     @Override
     public void delete(Ristorante ristorante) {
+        String query="Delete FROM ristorante WHERE nome= ? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,ristorante.getNome() );
+            preparedStatement.execute();
+            this.restRelationsPResentInTheJoinTable(connection , ristorante.getNome());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
     @Override
@@ -158,6 +170,22 @@ public class RistoranteDaoJDBC implements RistoranteDao {
             e.printStackTrace();
         }
         return ristoranti;
+    }
+
+    @Override
+    public void update(Ristorante ristorante,String descrizione,String ubicazione) {
+        String query = "UPDATE ristorante SET descrizione = ?, ubicazione = ? WHERE nome = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,descrizione );
+            preparedStatement.setString(2,ubicazione );
+            preparedStatement.setString(3,ristorante.getNome());
+            preparedStatement.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {

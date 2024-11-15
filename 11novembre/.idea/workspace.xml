@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6859f96-7a79-40f3-9417-5cb2e7f6d1dc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/PiattoProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/PiattoProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/PiattoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/PiattoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/RistoranteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/RistoranteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/PiattoDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/PiattoDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/RistoranteDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/RistoranteDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/RistoranteProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dipartimento/demowebapplications/persistence/dao/impljdbc/RistoranteProxy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +192,8 @@
       <workItem from="1730735059501" duration="6140000" />
       <workItem from="1730916215514" duration="934000" />
       <workItem from="1730979319662" duration="3112000" />
-      <workItem from="1731598690557" duration="407000" />
+      <workItem from="1731598690557" duration="1017000" />
+      <workItem from="1731668386131" duration="4522000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />

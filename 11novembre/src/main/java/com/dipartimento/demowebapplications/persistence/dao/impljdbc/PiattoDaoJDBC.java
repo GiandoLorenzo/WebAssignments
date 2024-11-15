@@ -62,11 +62,6 @@ public class PiattoDaoJDBC implements PiattoDao {
     @Override
     public void save(Piatto piatto) {
 
-        /*
-        INSERT INTO t VALUES (1,'foo updated'),(3,'new record')
-ON CONFLICT (id) DO UPDATE SET txt = EXCLUDED.txt;
-         */
-
 
         String query = "INSERT INTO piatto (nome, ingredienti) VALUES (?, ?) " +
                 "ON CONFLICT (nome) DO UPDATE SET ingredienti = EXCLUDED.ingredienti";
@@ -74,14 +69,56 @@ ON CONFLICT (id) DO UPDATE SET txt = EXCLUDED.txt;
             statement.setString(1, piatto.getNome());
             statement.setString(2, piatto.getIngredienti());
             statement.executeUpdate();
+            List<Ristorante> ristoranti = piatto.getRistoranti();
+            if(ristoranti==null|| ristoranti.isEmpty()){
+                return;
+            }
+            restRelationsPResentInTheJoinTable(connection,piatto.getNome());
+            RistoranteDao rd=DBManager.getInstance().getRistoranteDao();
+            for( Ristorante r:ristoranti){
+                rd.save(r);
+                insertJoinRistorantePiatto(connection,r.getNome(),piatto.getNome());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    private void restRelationsPResentInTheJoinTable(Connection connection, String nomePiatto) throws Exception {
+
+        String query="Delete FROM ristorante_piatto WHERE piatto_nome= ? ";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, nomePiatto);
+
+
+        preparedStatement.execute();
+
+    }
+
+    private void insertJoinRistorantePiatto(Connection connection , String nomeRistorante, String nomePiatto) throws SQLException {
+
+        String query="INSERT INTO ristorante_piatto (ristorante_nome,piatto_nome) VALUES (? , ?)";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, nomeRistorante);
+        preparedStatement.setString(2, nomePiatto);
+
+        preparedStatement.execute();
+
+    }
 
     @Override
     public void delete(Piatto piatto) {
-
+        String query="Delete FROM piatto WHERE nome= ? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,piatto.getNome() );
+            preparedStatement.execute();
+            this.restRelationsPResentInTheJoinTable(connection , piatto.getNome());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -109,6 +146,20 @@ ON CONFLICT (id) DO UPDATE SET txt = EXCLUDED.txt;
             e.printStackTrace();
         }
         return piatti;
+    }
+
+    @Override
+    public void update(Piatto piatto, String ingredienti) {
+        String query = "UPDATE piatto SET ingredienti = ? WHERE nome = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,ingredienti );
+            preparedStatement.setString(2,piatto.getNome() );
+            preparedStatement.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

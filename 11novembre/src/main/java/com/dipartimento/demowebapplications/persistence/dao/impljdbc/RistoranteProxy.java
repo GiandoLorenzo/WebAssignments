@@ -14,6 +14,13 @@ import java.util.List;
 public class RistoranteProxy extends Ristorante {
 
 
+    public RistoranteProxy(String nome, String descrizione, String ubicazione) {
+    }
+
+    public RistoranteProxy() {
+
+    }
+
     public List<Piatto> getPiatti() {
         if(this.piatti==null){
             this.piatti= DBManager.getInstance().getPiattoDao().findAllByRistoranteName(this.nome);

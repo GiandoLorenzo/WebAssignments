@@ -18,6 +18,7 @@ public interface PiattoDao {
 
     public List<Piatto> findAllByRistoranteName(String name);
 
+    public void update(Piatto piatto, String ingredienti);
 
 
 

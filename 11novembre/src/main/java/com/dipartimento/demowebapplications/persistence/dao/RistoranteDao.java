@@ -10,5 +10,5 @@ public interface RistoranteDao {
     public void save(Ristorante ristorante);
     public void delete(Ristorante ristorante);
     public List<Ristorante> findAllByPiattoName(String name);
-
+    public void update(Ristorante ristorante,String descrizione,String ubicazione);
 }
